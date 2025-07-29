@@ -23,6 +23,11 @@ public class LoginTest01 {
 
         WebElement uyari_mesaji = driver.findElement(By.id("swal2-html-container"));
         String mesaj = uyari_mesaji.getText();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         if (mesaj.equals("Lütfen kullanıcı adınızı girin")) {
             System.out.println("TEST BAŞARILI");
@@ -30,7 +35,12 @@ public class LoginTest01 {
         } else {
             System.out.println("TEST BAŞARISIZ");
         }
+        driver.quit();
 
     }
 
 }
+/*
+ * 1.Senaryo: Kullanıcı adı boşken devam et butonuna tıklama.
+ * Beklenen sonuç : Kullanıcıya "Kullanıcı adı giriniz" uyarısı göstermeli.
+ */
