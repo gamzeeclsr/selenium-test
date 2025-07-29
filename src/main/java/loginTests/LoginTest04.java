@@ -44,3 +44,7 @@ public class LoginTest04 {
     }
 
 }
+/*
+ * 4.Senaryo : Parola alanı boş bırakılarak "Giriş Yap" tıklanır.
+ * Beklenen sonuç : "Parola giriniz" olacak şekilde uyarı vermeli
+ */
