@@ -47,7 +47,7 @@ public class LoginTest05 {
             System.out.println("TEST BAŞARISIZ");
         }
 
-        driver.quit();
+        // driver.quit();
 
     }
 

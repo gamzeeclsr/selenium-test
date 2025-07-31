@@ -39,7 +39,7 @@ public class LoginTest04 {
         } else {
             System.out.println("TEST BAŞARISIZ");
         }
-        driver.quit();
+        // driver.quit();
 
     }
 
