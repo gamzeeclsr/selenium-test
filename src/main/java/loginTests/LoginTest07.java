@@ -13,10 +13,10 @@ public class LoginTest07 {
     public static void main(String[] args) {
         setupDriver();
         openLoginPage();
-        enterUsername("gamze.c");
+        enterUsername("Gamze");
         clickContinue();
         clickRememberMe();
-        enterPassword("54321");
+        enterPassword("1234");
         veriftyLogin("https://apitest.guneyeksport.com/vehicle-tracking");
         profile();
         logout();
