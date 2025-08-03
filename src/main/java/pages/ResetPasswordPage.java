@@ -3,6 +3,7 @@ package pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,11 +30,26 @@ public class ResetPasswordPage {
         fortgotPassword.click(); // Şifremi unuttum linkine tıkla
     }
 
-    public void email_Input(String email) {
+    public void email_Input(String email, boolean pressEnter) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(emailInput));
         emailField.clear(); // E-posta alanını temizle
-        emailField.sendKeys(email); // E-posta alanına e-posta adresini gir
+        emailField.sendKeys(email);
+        if (pressEnter) {
+            emailField.sendKeys(Keys.ENTER);
+            try {
+                clickSuccessButton();
+                System.out.println("Enter sonrası başarılı mesaj geldi, Tamam butonuna tıklandı.");
+            } catch (Exception e) {
+                driver.quit(); // Tarayıcıyı kapat
+                System.out.println("Enter sonrası başarılı mesaj gelmedi veya Tamam butonu bulunamadı.");
+                // Tarayıcıyı kapat
+
+            }
+
+        } else {
+            System.out.println("enter tuşu aktif değil"); // Enter tuşuna basılmadı
+        }
     }
 
     public void clickResetButton() {

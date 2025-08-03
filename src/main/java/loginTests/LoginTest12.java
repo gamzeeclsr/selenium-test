@@ -27,7 +27,7 @@ public class LoginTest12 {
 
             ResetPasswordPage resetPasswordPage = new ResetPasswordPage(driver);
             resetPasswordPage.clickForgotPassword();
-            resetPasswordPage.email_Input("");
+            resetPasswordPage.email_Input("", false); // E-posta alanı boş bırakılır
             resetPasswordPage.clickResetButton();
             String errorMessage = resetPasswordPage.getErrorMessage();
             System.out.println("Hata mesajı: " + errorMessage);

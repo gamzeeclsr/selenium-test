@@ -29,7 +29,7 @@ public class LoginTest11 {
 
             ResetPasswordPage resetPasswordPage = new ResetPasswordPage(driver);
             resetPasswordPage.clickForgotPassword();
-            resetPasswordPage.email_Input("jhsdfdskfhdkjshfkj");
+            resetPasswordPage.email_Input("jhsdfdskfhdkjshfkj", false);
             resetPasswordPage.clickResetButton();
             String errorMessage = resetPasswordPage.getErrorMessage();
             System.out.println("Hata mesajı: " + errorMessage);

@@ -27,7 +27,7 @@ public class LoginTest14 {
 
             ResetPasswordPage resetPasswordPage = new ResetPasswordPage(driver);
             resetPasswordPage.clickForgotPassword();
-            resetPasswordPage.email_Input("gamze@gmail.com");
+            resetPasswordPage.email_Input("gamze@gmail.com", false);
             resetPasswordPage.clickResetButton();
             resetPasswordPage.clickSuccessButton();
             resetPasswordPage.isResetButtonEnabled();
