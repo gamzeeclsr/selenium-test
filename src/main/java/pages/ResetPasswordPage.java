@@ -19,7 +19,9 @@ public class ResetPasswordPage {
     By emailInput = By.id("email"); // E-posta girişi için element
     By resetButton = By.xpath("//*[@id='app']/div[3]/div/div[2]/div[2]/div/div[2]/div[2]/button");
     By successMessage = By.id("swal2-title");
+    By successBtn = By.xpath("/html/body/div[3]/div/div[6]/button[1]");
     By errorMessage = By.id("swal2-title");
+    By isEnableButton = By.xpath("//*[@id='app']/div[3]/div/div[2]/div[2]/div/div[2]/div[2]/span");
 
     public void clickForgotPassword() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -45,6 +47,18 @@ public class ResetPasswordPage {
         WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage));
         return messageElement.getText(); // Başarılı mesajını al
     }
+
+    public void clickSuccessButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement successButton = wait.until(ExpectedConditions.elementToBeClickable(successBtn));
+        successButton.click(); // Başarılı mesajdaki butona tıkla
+    }
+
+    public boolean isResetButtonEnabled() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement resetBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(isEnableButton));
+        return resetBtn.isEnabled();
+    }// Butonun etkin olup olmadığını kontrol et
 
     public String getErrorMessage() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
