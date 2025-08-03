@@ -41,10 +41,9 @@ public class ResetPasswordPage {
                 clickSuccessButton();
                 System.out.println("Enter sonrası başarılı mesaj geldi, Tamam butonuna tıklandı.");
             } catch (Exception e) {
-                driver.quit(); // Tarayıcıyı kapat
                 System.out.println("Enter sonrası başarılı mesaj gelmedi veya Tamam butonu bulunamadı.");
-                // Tarayıcıyı kapat
-
+                driver.quit(); // Tarayıcıyı kapat
+                return; // Metot sonlandır
             }
 
         } else {
