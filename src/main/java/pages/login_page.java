@@ -14,6 +14,7 @@ package pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -35,11 +36,15 @@ public class login_page {
 
     // metotlara geliyoruz
 
-    public void enterUsername(String username) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));// Elementi bekle ve referansı al
+    public void enterUsername(String username, boolean pressEnter) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement userInput = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameInput));
-        userInput.clear(); // Bekleme sonrası gelen element üzerinde işlem yap
+        userInput.clear();
         userInput.sendKeys(username);
+        if (pressEnter) {
+            userInput.sendKeys(Keys.ENTER);
+            System.out.println("Enter basıldı, Devam butonuna ayrıca tıklanmıyor.");
+        }
     }
 
     public void clickContinue() {
@@ -49,11 +54,15 @@ public class login_page {
         continueBttn.click(); // Devam butonuna tıkla
     }
 
-    public void enterPassword(String password) {
+    public void enterPassword(String password, boolean pressEnter) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement passwordfield = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInput));
         passwordfield.clear();
-        passwordfield.sendKeys(password); // Şifre alanına şifreyi gir
+        passwordfield.sendKeys(password);
+        if (pressEnter) {
+            passwordfield.sendKeys(Keys.ENTER);
+            System.out.println("Enter basıldı, Giriş butonuna ayrıca tıklanmıyor.");
+        }
     }
 
     public void clickLogin() {

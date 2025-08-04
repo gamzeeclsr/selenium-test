@@ -22,7 +22,7 @@ public class LoginTest14 {
             driver.get("https://apitest.guneyeksport.com/");
 
             login_page LoginPage = new login_page(driver);
-            LoginPage.enterUsername("gamze");
+            LoginPage.enterUsername("gamze", false);
             LoginPage.clickContinue();
 
             ResetPasswordPage resetPasswordPage = new ResetPasswordPage(driver);

@@ -26,10 +26,10 @@ public class LoginTest10 {
 
             login_page loginPage = new login_page(driver);
 
-            loginPage.enterUsername("Gamze");
+            loginPage.enterUsername("Gamze", false);
             loginPage.clickContinue();
 
-            loginPage.enterPassword("1234");
+            loginPage.enterPassword("1234", false);
             loginPage.clickLogin();
 
             // İstersen buraya doğrulama veya başka test adımları ekleyebilirsin

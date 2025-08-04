@@ -21,7 +21,7 @@ public class LoginTest15 {
             driver.manage().window().maximize();
             driver.get("https://apitest.guneyeksport.com/");
             login_page Login_page = new login_page(driver);
-            Login_page.enterUsername("gamze");
+            Login_page.enterUsername("gamze", false);
             Login_page.clickContinue();
             ResetPasswordPage resetPasswordPage = new ResetPasswordPage(driver);
             resetPasswordPage.clickForgotPassword();
