@@ -14,6 +14,7 @@ package pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,10 +30,12 @@ public class login_page {
 
     // elementlerin locator'larını tanımlıyoruz
     By usernameInput = By.id("username"); // Kullanıcı adı girişi için element
-    By continueButton = By.xpath("//*[@id='app']/div[3]/div/div[2]/div[2]/div/div[2]/button"); // Devam butonu için
-                                                                                               // element
+    By continueButton = By.xpath("//*[@id='app']/div[3]/div/div[2]/div[2]/div/div[2]/button");
     By passwordInput = By.id("password"); // Şifre girişi için element
-    By loginButton = By.xpath("//*[@id='app']/div[3]/div/div[2]/div[2]/div/div[2]/button"); // Giriş butonu için element
+    By loginButton = By.xpath("//*[@id='app']/div[3]/div/div[2]/div[2]/div/div[2]/button");
+    By errormessage = By.id("swal2-html-container");
+    By okeyBttn = By.cssSelector("button.swal2-confirm");
+    By destek = By.xpath("//*[@id='app']/div[3]/div/div[2]/div[2]/div/div[3]/div[2]/a");
 
     // metotlara geliyoruz
 
@@ -71,6 +74,43 @@ public class login_page {
                                                                                                           // butonunu
                                                                                                           // bekle
         loginButtonelement.click(); // Giriş butonuna tıkla
-        // Giriş butonuna tıkla
     }
+
+    public void handleErrorMessageAndClickOK() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        try {
+            WebElement errormsg = wait.until(ExpectedConditions.visibilityOfElementLocated(errormessage));
+            System.out.println(" Hata mesajı göründü: " + errormsg.getText());
+
+            WebElement okbttn = wait.until(ExpectedConditions.elementToBeClickable(okeyBttn));
+            okbttn.click();
+            System.out.println("OK butonuna tıklandı.");
+
+        } catch (Exception e) {
+            System.out.println("❌ Hata mesajı veya OK butonuna erişilemedi: " + e.getMessage());
+        }
+    }
+
+    public boolean isSamePage(String previousUrl) {
+        String currentUrl = driver.getCurrentUrl();
+        boolean same = currentUrl.equals(previousUrl);
+        System.out.println(same ? "✅ Aynı sayfadasınız." : "❌ Sayfa değişmiş!");
+        return same;
+    }
+
+    public boolean isPasswordFieldEmpty() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement passwordfield = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInput));
+        String pwdValue = passwordfield.getAttribute("value");
+        boolean empty = pwdValue.isEmpty();
+        System.out.println(empty ? "✅ Şifre alanı temizlenmiş." : "❌ Şifre alanı temizlenmemiş: " + pwdValue);
+        return empty;
+    }
+
+    public void destk() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement destekk = wait.until(ExpectedConditions.elementToBeClickable(destek));
+        destekk.click();
+    }
+
 }
