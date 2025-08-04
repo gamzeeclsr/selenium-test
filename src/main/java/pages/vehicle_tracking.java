@@ -32,6 +32,13 @@ public class vehicle_tracking {
         searchInput.sendKeys(Keys.ENTER);
     }
 
+    public void clearSearchAndEnter() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement searchInput = wait.until(ExpectedConditions.visibilityOfElementLocated(vt_search));
+        searchInput.clear();
+        searchInput.sendKeys(Keys.ENTER);
+    }
+
     public void verifyVehicleMarkerOnMap(String plaka) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         String dynamicXpath = String.format("//div[@title='%s']", plaka); // s string yer tutucu durumu
@@ -56,7 +63,7 @@ public class vehicle_tracking {
 
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(markerBy));
-            System.out.println("  Geçersiz plaka olmasına rağmen  görünüyor! (" + plaka + ")");
+            System.out.println("  tüm plakalar listelendi" + plaka + ")");
         } catch (Exception e) {
             System.out.println(" Beklendiği gibi " + plaka + " plakalı araç haritada görünmüyor.");
         }
