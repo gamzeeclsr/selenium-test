@@ -87,15 +87,8 @@ public class login_page {
             System.out.println("OK butonuna tıklandı.");
 
         } catch (Exception e) {
-            System.out.println("❌ Hata mesajı veya OK butonuna erişilemedi: " + e.getMessage());
+            System.out.println(" Hata mesajı veya OK butonuna erişilemedi: " + e.getMessage());
         }
-    }
-
-    public boolean isSamePage(String previousUrl) {
-        String currentUrl = driver.getCurrentUrl();
-        boolean same = currentUrl.equals(previousUrl);
-        System.out.println(same ? "✅ Aynı sayfadasınız." : "❌ Sayfa değişmiş!");
-        return same;
     }
 
     public boolean isPasswordFieldEmpty() {
@@ -103,8 +96,8 @@ public class login_page {
         WebElement passwordfield = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInput));
         String pwdValue = passwordfield.getAttribute("value");
         boolean empty = pwdValue.isEmpty();
-        System.out.println(empty ? "✅ Şifre alanı temizlenmiş." : "❌ Şifre alanı temizlenmemiş: " + pwdValue);
-        return empty;
+        System.out.println(empty ? " Şifre alanı temizlenmiş." : " Şifre alanı temizlenmemiş: " + pwdValue);
+        return empty; // empty ? boş mu dolu mu diye kontrol ediyor
     }
 
     public void destk() {

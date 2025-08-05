@@ -68,4 +68,5 @@ public class vehicle_tracking {
             System.out.println(" Beklendiği gibi " + plaka + " plakalı araç haritada görünmüyor.");
         }
     }
+
 }
