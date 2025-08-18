@@ -26,6 +26,8 @@ public class vehicle_tracking {
     By vt_search = By.xpath("//*[@id='app']/div[3]/div[2]/div[2]/label/input");
     By car_bttn = By.xpath("//*[@id='app']/div[3]/div[2]/div[4]/div[1]/div/div[3]/div[1]/div[2]/div/div[3]/div");
     By group_details = By.xpath("//*[@id='app']/div[3]/div[2]/div[2]/div[2]");
+    By summary = By.xpath("//*[@id='app']/div[3]/div[2]/div[2]/button[3]");
+    By cars = By.xpath("//*[@id='app']/div[3]/div[2]/div[2]/div[2]/div/div[2]/div/table/thead/tr/th[3]");
 
     public void vtSearch(String plaka) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -69,6 +71,12 @@ public class vehicle_tracking {
                 }
             }
         }
+    }
+
+    public void summarytable() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement summarybttn = wait.until(ExpectedConditions.visibilityOfElementLocated(summary));
+        summarybttn.click();
     }
 
     public void clearSearchAndEnter() {
