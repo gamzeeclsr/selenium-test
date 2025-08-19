@@ -24,7 +24,9 @@ public class assertionsTest {
         driver.get("https://www.google.com/?hl=tr");
         String expectedData = "Google"; // beklenen veri
         String actualData = driver.getTitle(); // gerçek veri
-        Assert.assertTrue(actualData.contains(expectedData));
+        Assert.assertTrue(actualData.contains(expectedData)); // içersinde yer alıyor mu diye kontrol ediyor
+        // System.out.println(actualData.equals(expectedData)); true false çıktısı verir
+        // Assert.assertEquals(expectedData, actualData);
 
     }
 
