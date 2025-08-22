@@ -2,49 +2,38 @@ package calısmaTestlerim;
 
 import java.time.Duration;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class junitdeneme {
-    WebDriver driver = null;
+    WebDriver driver;
 
-    @Before
+    @BeforeEach
     public void hazirlikyap() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
     }
 
     @Test
-    public void ziyaretet() {
+    public void ziyaretet() throws InterruptedException {
         driver.get("https://www.facebook.com/?locale=tr_TR");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
+        Thread.sleep(2000); // test gözlemlenebilir olsun diye
     }
 
     @Test
-    public void googlegiris() {
+    public void googlegiris() throws InterruptedException {
         driver.get("https://www.google.com/?hl=tr");
-        try {
-            Thread.sleep(2000);
+        Thread.sleep(2000);
+    }
 
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+    @AfterEach
+    public void cikisYap() {
+        if (driver != null) {
+            driver.quit();
         }
-
     }
-
-    @After
-    public void cıkısyao() {
-        driver.quit();
-    }
-
 }

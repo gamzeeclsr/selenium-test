@@ -2,17 +2,17 @@ package calısmaTestlerim;
 
 import java.time.Duration;
 
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class assertionsTest {
-    static WebDriver driver = null;
+    static WebDriver driver;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpTest() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -24,15 +24,15 @@ public class assertionsTest {
         driver.get("https://www.google.com/?hl=tr");
         String expectedData = "Google"; // beklenen veri
         String actualData = driver.getTitle(); // gerçek veri
-        Assert.assertTrue(actualData.contains(expectedData)); // içersinde yer alıyor mu diye kontrol ediyor
+        Assertions.assertTrue(actualData.contains(expectedData)); // içersinde yer alıyor mu diye kontrol ediyor
         // System.out.println(actualData.equals(expectedData)); true false çıktısı verir
-        // Assert.assertEquals(expectedData, actualData);
-
+        // Assertions.assertEquals(expectedData, actualData);
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
-
 }

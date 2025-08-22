@@ -2,17 +2,17 @@ package calısmaTestlerim;
 
 import java.time.Duration;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class yeni {
-    static WebDriver driver = null;
+    static WebDriver driver;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpTest() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -20,7 +20,7 @@ public class yeni {
     }
 
     @Test
-    public void LoginTest() {
+    public void loginTest() {
         driver.get("https://practicetestautomation.com/practice-test-login/");
         driver.findElement(By.id("username")).sendKeys("student");
         driver.findElement(By.id("password")).sendKeys("Password123");
@@ -28,15 +28,16 @@ public class yeni {
     }
 
     @Test
-    public void Exceptions() {
+    public void exceptionsTest() {
         driver.get("https://practicetestautomation.com/practice-test-exceptions/");
         driver.findElement(By.id("edit_btn")).click();
         driver.findElement(By.id("add_btn")).click();
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
-
 }
