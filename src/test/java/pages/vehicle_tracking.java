@@ -9,11 +9,13 @@ package pages;
 import java.time.Duration;
 import java.util.Arrays;
 
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class vehicle_tracking {
@@ -28,6 +30,11 @@ public class vehicle_tracking {
     By group_details = By.xpath("//*[@id='app']/div[3]/div[2]/div[2]/div[2]");
     By summary = By.xpath("//*[@id='app']/div[3]/div[2]/div[2]/button[3]");
     By cars = By.xpath("//*[@id='app']/div[3]/div[2]/div[2]/div[2]/div/div[2]/div/table/thead/tr/th[3]");
+    By fılo = By.xpath("//span[normalize-space()='GÜNEY EKSPORT']");
+    By fıltre = By.xpath("//span[normalize-space()='Filtre']");
+    By aracturu = By.xpath("//*[@id='app']/div[3]/div[2]/div[2]/div[2]/form/div[3]/div/div/div/div[2]");
+    By hepsı = By.xpath("//*[@id='null-2']/span");
+    By filtreleme = By.xpath("//*[@id='app']/div[3]/div[2]/div[2]/div[2]/form/div[6]/button[1]");
 
     public void vtSearch(String plaka) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -41,6 +48,37 @@ public class vehicle_tracking {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement cars = wait.until(ExpectedConditions.visibilityOfElementLocated(car_bttn));
         cars.click();
+    }
+
+    public void filo() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement guney = wait.until(ExpectedConditions.visibilityOfElementLocated(fılo));
+        guney.click();
+    }
+
+    public void filtre() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement filtre = wait.until(ExpectedConditions.visibilityOfElementLocated(fıltre));
+        filtre.click();
+    }
+
+    public void aracturudrapdown() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement aracturu1 = wait.until(ExpectedConditions.visibilityOfElementLocated(aracturu));
+        aracturu1.click();
+
+    }
+
+    public void hepsi() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement hepsi1 = wait.until(ExpectedConditions.visibilityOfElementLocated(hepsı));
+        hepsi1.click();
+    }
+
+    public void filtreleme() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement filtreleme1 = wait.until(ExpectedConditions.visibilityOfElementLocated(filtreleme));
+        filtreleme1.click();
     }
 
     public void groupdetails(String expectedSuffix) {
@@ -71,6 +109,11 @@ public class vehicle_tracking {
                 }
             }
         }
+    }
+
+    @Test
+    void testName() {
+
     }
 
     public void summarytable() {
